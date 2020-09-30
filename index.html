@@ -18,7 +18,6 @@
          <div class="container d-flex flex-column align-items-center justify-content-center">
             <hi class="display-4">
               Ejercicios de JS (javaScrits)
-                 <p>bababoei</p>
             </hi>
 
 
@@ -26,12 +25,45 @@
           <p> El resultado te mostrara  las letras en posiciones</p>
           <p>Ej</p>
           <p class="text-muted">PD: el 0 se toma como posicion par </p>
-          <div class="container d-flex flex-row">
-            
-            
+          <div class="container d-flex flex-row align-items-center justify-content-center">
+              <textarea name="palabras" id"palabras" cols="cols" rows="18"></textarea>
+                    <div class="container bg-danger" id="resultado">
+                        Aqui Apareceran los resultados
+                    </div>
+
              </div>
+             <button class="btn btn-success"onclick="revisandoCadenas()" >¡Revisar!</button>
             </div>
         </div>
+        <script>
+            revisandoCadenas = () => {
+                let respuesta = {};
+                let palabras = document.getElementById('palabras').value;
+                palabras = palabras.split(/\r?\n/)
+                palabras.forEach(palabras =>{
+                    let tamañoCadena =palabra.length;
+                    let cadenaPar ="";
+                    let cadenaNon = "";
+
+                    for(let x=0; x<tamañoCadena; x++){
+                        let letra = palabra[x];
+                        if(x===0 || x%2===0){
+                            cadenaPar += letra;
+                        } else{
+                            cadenaNon += letra;
+                        }
+                    }
+                    respuesta[palabra] =[cadenaPar, cadenaNon];
+                });
+               
+            }
+            let contenedorResultado = document.getElementById('resultado');
+           ontenedorResultado.innerHTML = "";
+            for (let palabra in respuesta) {
+                contenedorResultado.innerText += 'Palabra ingresada: ' + palabra + '\n';
+                contenedorResultado.innerText += 'Resultado: ' + respuesta[palabra][0]+ " " + respuesta+ '\n';
+            }
+        </script>
     </div>
     
 </body>
